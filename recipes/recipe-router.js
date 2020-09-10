@@ -21,4 +21,9 @@ router.get('/:id/instructions', (req, res) => {
     .then(item => res.status(200).json(item))
 })
 
+router.get('/:id/shoppingList', (req, res) => {
+    recipes.getShoppingList(req.params.id)
+    .then(item => res.status(200).json(item))
+})
+
 module.exports = router
