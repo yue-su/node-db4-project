@@ -21,17 +21,20 @@ exports.up = function (knex) {
             tbl.increments()
             tbl.string('ingredient_name', 128).notNullable()
         })
-        .createTable('receip_ingredient', tbl => {
+        .createTable('recipe_detail', tbl => {
+            tbl.increments()
             tbl.integer('recipe_id').unsigned().notNullable().references('id').inTable('recipes')
             tbl.integer('ingredient_id').unsigned().notNullable().references('id').inTable('ingredients')
-            tbl.primary(["recipe_id", "ingredient_id"])
-    })
+            tbl.integer('quantity').notNullable()
+        })
+    
   
 };
 
 exports.down = function(knex) {
     return knex.schema
-    .dropTableIfExists('ingredients')
-    .dropTableIfExists('instructions')
-    .dropTableIfExists('recipes')
+      .dropTableIfExists("receip_ingredient")
+      .dropTableIfExists("ingredients")
+      .dropTableIfExists("instructions")
+      .dropTableIfExists("recipes")
 };
