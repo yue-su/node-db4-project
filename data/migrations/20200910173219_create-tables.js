@@ -1,4 +1,6 @@
 
+//https://dbdesigner.page.link/7qYSUr5hAkqeziTE9
+
 exports.up = function (knex) {
     
     return knex.schema
